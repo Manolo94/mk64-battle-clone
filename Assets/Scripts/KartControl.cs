@@ -222,7 +222,7 @@ public class KartControl : MonoBehaviour
         // Reset drift amount when jump is released
         if (!jump) driftAmount = 0;
 
-        Debug.Log("DRIFT " + driftAmount);
+        //Debug.Log("DRIFT " + driftAmount);
 
         // lock drift direction when hitting the ground
         if (jump && !prevOnGround && onGround)

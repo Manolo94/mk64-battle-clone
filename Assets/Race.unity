@@ -363,7 +363,7 @@ Transform:
   m_GameObject: {fileID: 295268326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 57.5, y: 50, z: 0}
-  m_LocalScale: {x: 0.1, y: 100, z: 115}
+  m_LocalScale: {x: 1, y: 100, z: 115}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -862,7 +862,7 @@ Transform:
   m_GameObject: {fileID: 723792015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -57.5, y: 50, z: 0}
-  m_LocalScale: {x: 0.1, y: 100, z: 115}
+  m_LocalScale: {x: 1, y: 100, z: 115}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1003,7 +1003,7 @@ Transform:
   m_GameObject: {fileID: 830979040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 50, z: 57.5}
-  m_LocalScale: {x: 115, y: 100, z: 0.1}
+  m_LocalScale: {x: 115, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1376,6 +1376,8 @@ MonoBehaviour:
     C -
     jump
 
+    N - activate item
+
     ESC - exit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1439,7 +1441,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 8.857872, y: -10.946426, z: -1.4075928, w: -126.11688}
+  m_margin: {x: 8.857872, y: -10.946426, z: -1.4075928, w: -149.24615}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1925,7 +1927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1529395850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2270,7 +2272,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 20, y: 20}
-  m_SizeDelta: {x: 250, y: 205}
+  m_SizeDelta: {x: 250, y: 224.4496}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1791504094
 MonoBehaviour:
@@ -2730,17 +2732,17 @@ PrefabInstance:
     - target: {fileID: 6194710568037660444, guid: 21614f39accd04045b47f33cea5b4d52,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.01
+      value: -30.77
       objectReference: {fileID: 0}
     - target: {fileID: 6194710568037660444, guid: 21614f39accd04045b47f33cea5b4d52,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.53
+      value: 12.45
       objectReference: {fileID: 0}
     - target: {fileID: 6194710568037660444, guid: 21614f39accd04045b47f33cea5b4d52,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -27.38
       objectReference: {fileID: 0}
     - target: {fileID: 6194710568037660444, guid: 21614f39accd04045b47f33cea5b4d52,
         type: 3}

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2082151841778857961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2861017375986569113}
+  m_Layer: 2
+  m_Name: BackwardShootPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2861017375986569113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082151841778857961}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0, y: 0.857, z: -1.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6194746120602531584}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &6191053742438751706
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1024,7 @@ GameObject:
   - component: {fileID: 6136586551307732736}
   - component: {fileID: 6088728509778229366}
   - component: {fileID: 3642897377710257349}
+  - component: {fileID: 4730954137787631964}
   m_Layer: 2
   m_Name: Kart
   m_TagString: Untagged
@@ -1142,9 +1174,26 @@ MonoBehaviour:
   BumpCoefficient: 5
   BumpDecayRate: 20
   DriftDecayRate: 0.2
+  DriftRegenRate: 0.5
   WheelSpeedSleepThreshold: 1
   JumpImpulse: 18
   WheelSpeedReductionFromBumps: 0.222
+--- !u!114 &4730954137787631964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6191641076222101188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e87e19bf1afddb49862ef6a1f162d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForwardShoot: {fileID: 7305751758358355415}
+  BackwardShoot: {fileID: 2861017375986569113}
+  greenShellPrefab: {fileID: 4013914291557475982, guid: d08d282e58a657a4fa782125b181162c,
+    type: 3}
 --- !u!1 &6191659459185640834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,6 +1224,8 @@ Transform:
   m_Children:
   - {fileID: 6194735752441339472}
   - {fileID: 6190170244283931506}
+  - {fileID: 7305751758358355415}
+  - {fileID: 2861017375986569113}
   m_Father: {fileID: 6194710568037660444}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2718,3 +2769,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8552556019284453886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7305751758358355415}
+  m_Layer: 2
+  m_Name: ForwardShootPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7305751758358355415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8552556019284453886}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.857, z: 1.015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6194746120602531584}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
