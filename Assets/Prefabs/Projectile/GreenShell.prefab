@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4013914291546604558}
   - component: {fileID: 4013914291546604544}
   - component: {fileID: 4013914291546604545}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4013914291557475968}
   - component: {fileID: 4013914291557475971}
   - component: {fileID: 4013914291557475969}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GreenShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7663599b077402418c84c0ab129537d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialVelocity: 35
+  initialVelocity: 38
   distanceToFloor: 0.6
   shellGravity: 30
 --- !u!135 &4013914291557475971

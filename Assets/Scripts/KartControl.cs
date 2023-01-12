@@ -92,8 +92,8 @@ public class KartControl : MonoBehaviour
             bool braking = false;
             if (brakeButton > 0)
             {
-                // If down and brake button are pressed, reverse
-                if (v < 0) wheelSpeed -= AccelerationRate * Time.deltaTime;
+                // If down and brake button are pressed, reverse (down is positive)
+                if (v > 0) wheelSpeed -= AccelerationRate * Time.deltaTime;
                 else braking = true;
             }
 

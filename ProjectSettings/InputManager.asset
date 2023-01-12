@@ -393,8 +393,8 @@ InputManager:
     m_Name: keyboard forward
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: s
-    positiveButton: w
+    negativeButton: 
+    positiveButton: s
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1
