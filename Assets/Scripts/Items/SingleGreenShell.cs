@@ -19,10 +19,15 @@ public class SingleGreenShell : ItemManager.Item
             backShell.GetComponent<GreenShell>().enabled = false;
             Debug.Log(backShell.name);
         }
+
+        // Make the item react to activates
+        activatorInventory.OnActivateReleased.AddListener(ActivateReleased);
     }
 
     public override void ActivateReleased(Inventory activatorInventory, float forwardAxis)
     {
+        Debug.Log("SingleGreenShell: Released");
+
         if (backShell != null)
         {
             backShell.SetActive(false);
@@ -34,10 +39,20 @@ public class SingleGreenShell : ItemManager.Item
 
         if (shoot != null)
         {
-            GameObject nItem = Instantiate(GreenShellProjectile);
-            nItem.SetActive(true);
-            nItem.transform.position = shoot.position;
-            nItem.transform.rotation = shoot.rotation;
+            GameObject gShell = Instantiate(GreenShellProjectile);
+            gShell.SetActive(true);
+            gShell.transform.position = shoot.position;
+            gShell.transform.rotation = shoot.rotation;
         }
+
+        activatorInventory.OnActivatePressed.RemoveListener(ActivatePressed);
+        activatorInventory.OnActivateReleased.RemoveListener(ActivateReleased);
+
+        Destroy(gameObject);
+    }
+
+    public override ItemManager.ItemType GetItemType()
+    {
+        return ItemManager.ItemType.SINGLE_GREEN_SHELL;
     }
 }

@@ -20,6 +20,7 @@ public class ItemManager : MonoBehaviour
     {
         public abstract void ActivatePressed(Inventory activatorInventory);
         public abstract void ActivateReleased(Inventory activatorInventory, float forwardAxis);
+        public abstract ItemType GetItemType();
     }
 
     public static Dictionary<ItemType, GameObject> ItemPrefabs;

@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(KartControl))]
 public class Inventory : MonoBehaviour
 {
     public Transform ForwardShoot;
     public Transform BackwardShoot;
+
+    public UnityEvent<Inventory> OnActivatePressed;
+    public UnityEvent<Inventory, float> OnActivateReleased;
+    public UnityEvent<Inventory> OnItemAdded;
+    public UnityEvent<Inventory> OnItemLost;
 
     private KartControl kartControl;
 
@@ -30,34 +35,51 @@ public class Inventory : MonoBehaviour
         bool activateItem = Input.GetButton(kartControl.InputName + " activate");
         float forward = Input.GetAxis(kartControl.InputName + " forward");
 
-        if(item != null)
+        if (activateItem && !prevActivate)
         {
-            if (activateItem && !prevActivate)
+            if (OnActivatePressed != null) OnActivatePressed.Invoke(this);
+            if (item != null)
             {
                 item.ActivatePressed(this);
-            }
+                item = null;
 
-            if (!activateItem && prevActivate)
-            {
-                item.ActivateReleased(this, forward);
-
-                Destroy(item.gameObject);
+                if(OnItemLost != null) OnItemLost.Invoke(this);
             }
+        }
+
+        if (!activateItem && prevActivate)
+        {
+            if (OnActivateReleased != null) OnActivateReleased.Invoke(this, forward);
         }
 
         prevActivate = activateItem;
 
-        // TODO: Implement pick-up system
+        // For debug
         if(Debug_AddItem) 
         {
-            GameObject newItem = ItemManager.ItemPrefabs[Debug_ItemToAdd];
-            if(newItem != null)
-            {
-                item = Instantiate(newItem.GetComponent<ItemManager.Item>(), transform);
-                // Items will be deactivated (not shown) when sitting in inventory
-                item.gameObject.SetActive(false);
-            }
+            AddItem(Debug_ItemToAdd);
         }
         Debug_AddItem = false;
+    }
+
+    public void AddRandomItem()
+    {
+        var keys = ItemManager.ItemPrefabs.Keys;
+        var itemIndex = Random.Range(0, keys.Count);
+
+        AddItem(keys.ToList()[itemIndex]);
+    }
+
+    public void AddItem(ItemManager.ItemType itemToAdd)
+    {
+        GameObject newItem = ItemManager.ItemPrefabs[itemToAdd];
+        if (newItem != null)
+        {
+            item = Instantiate(newItem.GetComponent<ItemManager.Item>(), transform);
+            // Items will be deactivated (not shown) when sitting in inventory
+            item.gameObject.SetActive(false);
+
+            if (OnItemAdded != null) OnItemAdded.Invoke(this);
+        }
     }
 }
