@@ -38,8 +38,31 @@ public class GreenShell : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            // Shoot it up a bit
+            var hitVelocity = shellVelocity.normalized + Vector3.up;
+            hitVelocity *= shellVelocity.magnitude;
+
+            other.GetComponent<PlayerDamage>().PlayerShotByShell(hitVelocity, transform.position);
+
+            Destroy(gameObject);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
+        // Destroy each other if it collides with a projectile
+        if(collision.gameObject.CompareTag("Projectile"))
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+
+            return;
+        }
+
         // Use shellVelocity and not shellBody.velocity. It seems that unity modifies the
         //  shellBody.velocity prematurely trying to resolve the collision
 

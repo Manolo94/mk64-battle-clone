@@ -267,6 +267,16 @@ public class KartControl : MonoBehaviour
         counter++;
     }
 
+    public void DisableStabilization()
+    {
+        KartBody.ResetCenterOfMass();
+    }
+
+    public void EnableStabilization()
+    {
+        KartBody.centerOfMass = KartBody.transform.InverseTransformPoint(CenterOfMass.position);
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if (collision.contacts[0].normal.y > 0)

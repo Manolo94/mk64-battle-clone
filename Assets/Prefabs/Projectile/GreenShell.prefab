@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4013914291557475969}
   m_Layer: 2
   m_Name: GreenShell
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
