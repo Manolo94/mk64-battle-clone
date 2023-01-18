@@ -2025,8 +2025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3317ce011d3d7b46967bf153d295027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeactivationTimeFromShellHit: 3
-  AngularVelocityFromShellHit: {x: 0, y: 0, z: 0}
+  DeactivationTimeFromShellHit: 2
+  AngularVelocityFromShellHit: {x: 10, y: 0, z: 5}
   LiveVisuals:
   - {fileID: 8711232250121010871}
   - {fileID: 8216950462881857944}
