@@ -8,7 +8,7 @@ public class SingleGreenShell : ItemManager.Item
 
     private GameObject backShell;
 
-    public override void ActivatePressed(Inventory activatorInventory)
+    public override void ActivatePressed(Inventory activatorInventory, float forwardAxis)
     {
         if (activatorInventory.BackwardShoot != null)
         {

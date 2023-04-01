@@ -7,8 +7,9 @@ public class Inventory : MonoBehaviour
 {
     public Transform ForwardShoot;
     public Transform BackwardShoot;
+    public Transform CenterPosition;
 
-    public UnityEvent<Inventory> OnActivatePressed;
+    public UnityEvent<Inventory, float> OnActivatePressed;
     public UnityEvent<Inventory, float> OnActivateReleased;
     public UnityEvent<Inventory> OnItemAdded;
     public UnityEvent<Inventory> OnItemLost;
@@ -17,7 +18,8 @@ public class Inventory : MonoBehaviour
 
     private bool prevActivate = false;
 
-    public ItemManager.Item item;
+    public ItemManager.Item item = null;
+    public ItemManager.Item deployedItem = null;
 
     // Debug
     public ItemManager.ItemType Debug_ItemToAdd;
@@ -37,10 +39,11 @@ public class Inventory : MonoBehaviour
 
         if (activateItem && !prevActivate)
         {
-            if (OnActivatePressed != null) OnActivatePressed.Invoke(this);
-            if (item != null)
+            if (OnActivatePressed != null) OnActivatePressed.Invoke(this, forward);
+            if (item != null && deployedItem == null)
             {
-                item.ActivatePressed(this);
+                item.ActivatePressed(this, forward);
+                deployedItem = item;
                 item = null;
 
                 if(OnItemLost != null) OnItemLost.Invoke(this);

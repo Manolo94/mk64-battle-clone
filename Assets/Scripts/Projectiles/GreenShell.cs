@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GreenShell : MonoBehaviour
 {
     public float initialVelocity = 0.0f;
     public float distanceToFloor = 0.2f;
     public float shellGravity = 1f; // Fake gravity on shells
+
+    public UnityEvent<GameObject> OnProjectileDestroyed;
 
     private Rigidbody shellBody;
     private Vector3 shellVelocity = Vector3.zero;
@@ -15,6 +18,11 @@ public class GreenShell : MonoBehaviour
     {
         shellBody = GetComponent<Rigidbody>();
         shellVelocity = initialVelocity * transform.forward;
+    }
+
+    private void OnDestroy()
+    {
+        if (OnProjectileDestroyed != null) OnProjectileDestroyed.Invoke(gameObject);
     }
 
     private void FixedUpdate()
@@ -46,7 +54,8 @@ public class GreenShell : MonoBehaviour
             var hitVelocity = shellVelocity.normalized + Vector3.up;
             hitVelocity *= shellVelocity.magnitude;
 
-            other.GetComponent<PlayerDamage>().PlayerShotByShell(hitVelocity, transform.position);
+            PlayerDamage playerDamage = other.GetComponent<PlayerDamage>();
+            if(playerDamage != null) playerDamage.PlayerShotByShell(hitVelocity, transform.position);
 
             Destroy(gameObject);
         }

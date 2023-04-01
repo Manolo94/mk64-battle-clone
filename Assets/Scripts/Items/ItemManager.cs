@@ -18,7 +18,7 @@ public class ItemManager : MonoBehaviour
 
     public abstract class Item : MonoBehaviour
     {
-        public abstract void ActivatePressed(Inventory activatorInventory);
+        public abstract void ActivatePressed(Inventory activatorInventory, float forwardAxis);
         public abstract void ActivateReleased(Inventory activatorInventory, float forwardAxis);
         public abstract ItemType GetItemType();
     }

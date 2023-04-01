@@ -263,7 +263,6 @@ public class KartControl : MonoBehaviour
         CollisionPosition = collision.contacts[0].point;
         CollisionNormal = collision.contacts[0].normal;
 
-        Debug.Log("Colliding " + counter);
         counter++;
     }
 
