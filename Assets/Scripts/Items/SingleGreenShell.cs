@@ -16,12 +16,22 @@ public class SingleGreenShell : ItemManager.Item
             backShell.transform.localPosition = Vector3.zero;
             backShell.SetActive(true);
             backShell.GetComponent<Rigidbody>().isKinematic = true;
-            backShell.GetComponent<GreenShell>().enabled = false;
-            Debug.Log(backShell.name);
+
+            var greenShell = backShell.GetComponent<GreenShell>();
+            greenShell.enabled = false;
+            // If green shell was destroyed while in the back, destroy the item
+            greenShell.OnProjectileDestroyed.AddListener((g) =>
+            {
+                activatorInventory.OnActivateReleased.RemoveListener(ActivateReleased);
+                Destroy(gameObject);
+            });
         }
 
-        // Make the item react to activates
+        // Make the item react to activate release
         activatorInventory.OnActivateReleased.AddListener(ActivateReleased);
+
+        // Stop the item from reacting to activate press
+        activatorInventory.OnActivatePressed.RemoveListener(ActivatePressed);
     }
 
     public override void ActivateReleased(Inventory activatorInventory, float forwardAxis)
@@ -45,7 +55,6 @@ public class SingleGreenShell : ItemManager.Item
             gShell.transform.rotation = shoot.rotation;
         }
 
-        activatorInventory.OnActivatePressed.RemoveListener(ActivatePressed);
         activatorInventory.OnActivateReleased.RemoveListener(ActivateReleased);
 
         Destroy(gameObject);
